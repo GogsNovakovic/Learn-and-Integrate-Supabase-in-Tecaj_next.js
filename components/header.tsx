@@ -27,6 +27,7 @@
             <a href="/" className="site-nav-link">Home</a>
             <a href="/courses" className="site-nav-link">Courses</a>
             <a href="/instructors" className="site-nav-link">Instructors</a>
+            <a href="/register" className="site-nav-link">Register</a>
           </nav>
           </div>
         </header>
