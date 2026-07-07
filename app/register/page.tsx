@@ -1,3 +1,4 @@
+import { signUpAction } from "@/actions/auth";
 import { SectionTitle } from "@/components/sectionTitle";
 
 export default function RegisterPage () {
@@ -11,7 +12,7 @@ export default function RegisterPage () {
                        description="All field are required"
                     ></SectionTitle>
 
-                    <form action="" className="stack-md panel">
+                    <form action={signUpAction} className="stack-md panel">
 
                         <div className="field">
                             <input type="text" className="input" 
