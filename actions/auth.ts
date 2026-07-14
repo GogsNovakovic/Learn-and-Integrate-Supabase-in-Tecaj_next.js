@@ -16,4 +16,25 @@ export async function signUpAction (
     const { data, error} = await supabase.auth.signUp({
         email, password
     });
-}
+
+    if (error) {
+        return {error: error.message};
+    }
+
+    if (!data.user) {
+        return {error: "Not sussessful"}
+    }
+
+    const fullName = `${firstName} ${lastName}`;
+    
+    const {error: profileError} = await supabase.from('students').insert({
+        user_uuid: data.user.id,
+        full_name: fullName,
+        country: country,
+        skill_level: skillLevel
+    })
+
+    if (profileError) {
+        return {error: "desila se greska"}
+    }
+} 
