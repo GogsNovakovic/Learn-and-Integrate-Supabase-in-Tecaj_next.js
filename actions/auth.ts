@@ -1,6 +1,7 @@
 "use server";
 
-import { createServerSupabaseClinet } from "@/utils/supabase/server";
+import { createServerSupabaseClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export async function signUpAction (
     formData: FormData
@@ -12,7 +13,7 @@ export async function signUpAction (
     const country = formData.get("country");
     const skillLevel = formData.get("skill_level"); 
 
-    const supabase = await createServerSupabaseClinet();
+    const supabase = await createServerSupabaseClient();
     const { data, error} = await supabase.auth.signUp({
         email, password
     });
@@ -37,4 +38,6 @@ export async function signUpAction (
     if (profileError) {
         return {error: "desila se greska"}
     }
+
+    redirect("/courses");
 } 

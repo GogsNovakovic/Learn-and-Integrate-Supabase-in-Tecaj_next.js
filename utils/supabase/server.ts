@@ -23,7 +23,7 @@ export const createClient =(
     } })
 }
 
-export async function createServerSupabaseClinet() {
+export async function createServerSupabaseClient() {
     const cookieStore = await cookies();
     return createClient(cookieStore);
 }

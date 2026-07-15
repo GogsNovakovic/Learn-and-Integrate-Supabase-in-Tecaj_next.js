@@ -1,5 +1,11 @@
+ import { createServerSupabaseClient } from "@/utils/supabase/server";
  import Link from "next/link"       
-       export function Header () {
+       export async function Header () {
+
+        const supabase = await createServerSupabaseClient();
+        const { data: {user}} = await supabase.auth.getUser();
+
+
         return (
             <header className="site-header">
           <div className="container site-header-inner">
@@ -27,7 +33,18 @@
             <a href="/" className="site-nav-link">Home</a>
             <a href="/courses" className="site-nav-link">Courses</a>
             <a href="/instructors" className="site-nav-link">Instructors</a>
-            <a href="/register" className="site-nav-link">Register</a>
+            
+
+            {user ? (
+              < form action="">
+                <button type="submit">Logout</button>
+              </form>
+            ) : (
+              <a href="/register" className="site-nav-link">Register</a>
+            )
+            }
+
+
           </nav>
           </div>
         </header>
