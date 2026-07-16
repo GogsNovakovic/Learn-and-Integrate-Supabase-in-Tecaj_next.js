@@ -46,3 +46,25 @@ export async function signOutAction() {
     const supabase = await createServerSupabaseClient();
     await supabase.auth.signOut();
     redirect("/")};
+
+export async function signInAction (
+    formData: FormData
+) {
+    const email = String(formData.get("email"));
+    const password = String(formData.get("password"));
+
+    if (!email || !password) {
+        return {error: "Email and password are required"};
+    }
+
+    const supabase = await createServerSupabaseClient();
+    const {error} = await supabase.auth.signInWithPassword({
+        email, password
+    });
+    
+    if (error) {
+        return {error: error.message};
+    }
+
+    redirect("/courses");
+}

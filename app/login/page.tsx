@@ -1,4 +1,4 @@
-import { signUpAction } from "@/actions/auth";
+import { signInAction } from "@/actions/auth";
 import { SectionTitle } from "@/components/sectionTitle";
 
 export default function RegisterPage () {
@@ -8,12 +8,12 @@ export default function RegisterPage () {
                 <div className="stack">
                     <SectionTitle
                        eyebrow="Students"
-                       title="Create an account"
-                       description="All field are required"
+                       title="Login"
+                       description="Use your email and password to login"
                     ></SectionTitle>
 
-                    <form action={signUpAction} className="stack-md panel">
-                                        
+                    <form action={signInAction} className="stack-md panel">
+
                         <div className="field">
                             <input type="email" className="input" name="email" placeholder="Email" />
                         </div>
