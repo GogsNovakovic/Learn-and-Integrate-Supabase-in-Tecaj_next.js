@@ -41,3 +41,11 @@ export async function signUpAction (
 
     redirect("/courses");
 } 
+
+export async function signOutAction() {
+    const supabase = await createServerSupabaseClient();
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+        return { error: error.message };
+    }
+    redirect("/")};
