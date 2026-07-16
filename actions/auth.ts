@@ -44,8 +44,5 @@ export async function signUpAction (
 
 export async function signOutAction() {
     const supabase = await createServerSupabaseClient();
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-        return { error: error.message };
-    }
+    await supabase.auth.signOut();
     redirect("/")};

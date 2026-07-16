@@ -1,4 +1,5 @@
- import { createServerSupabaseClient } from "@/utils/supabase/server";
+ import { signOutAction } from "@/actions/auth";
+import { createServerSupabaseClient } from "@/utils/supabase/server";
  import Link from "next/link"       
        export async function Header () {
 
@@ -36,15 +37,17 @@
             
 
             {user ? (
-              < form action="">
+              < form action={signOutAction}>
                 <button type="submit">Logout</button>
               </form>
             ) : (
+              <div>
+                <a href="/login" className="site-nav-link">Login</a>
               <a href="/register" className="site-nav-link">Register</a>
+              </div>
+              
             )
             }
-
-
           </nav>
           </div>
         </header>
